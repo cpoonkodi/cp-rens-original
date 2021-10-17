@@ -7,6 +7,17 @@
   --color-body-darker: #5c5577;
   --color-border: #ccc;
   --border-radius: 30px;
+  --marquee-width: 80vw;
+  --marquee-height: 30vh;
+  /* mm*/
+  --marquee-width: 1100px;
+  --marquee-height: 100px;
+  --moving-elements: 9;
+  --marquee-elements-displayed: 4;
+  --marquee-element-width: calc(
+    var(--marquee-width) / var(--marquee-elements-displayed)
+  );
+  --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
 }
 
 *,
@@ -515,11 +526,30 @@ video {
 }
 
 img.imagesize {
-  background-color: #fff;
+  background-color: #f5f1f1;
   width: 200px;
   height: 200px;
 }
 
+.marqueItem-display {
+  display: flex;
+  list-style-type: none;
+  background-color: #f5f1f1;
+  object-fit: cover;
+  width: 300px;
+  height: 100px;
+}
+
+.marqueItem {
+  background-color: #f5f1f1;
+  object-fit: cover;
+  width: 300px;
+  height: 200px;
+}
+
+.imagesize:hover {
+  transform: scale(1.5);
+}
 p.ridge {
   border-style: ridge;
 }
@@ -529,6 +559,22 @@ p.ridge {
   width: 50%;
   padding: 10px;
   height: 600px; /* Should be removed. Only for demonstration */
+}
+
+.marquecolumn {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  float: left;
+  width: 300px;
+  padding: 10px;
+  height: 200px; /* Should be removed. Only for demonstration */
+  /* margin-left: 1rem;
+    margin-right: 1rem;
+    position: relative;
+    float: left;
+    height: 100%;
+    min-height: 1px;*/
 }
 
 /* Clear floats after the columns */
@@ -548,8 +594,139 @@ img.imgsmall {
   border-style: ridge;
 }
 
+.imgsmall:hover {
+  border-color: green;
+}
+
 .select:hover {
   background: #fff;
   color: var(--color-headings);
   border: 2px solid var(--color-headings);
+}
+
+.marqueImage {
+  list-style: none;
+  position: relative;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: center;
+  transition: all 2s ease;
+  -webkit-box-pack: center;
+  animation: scrolling 10s linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(80vw);
+  }
+  100% {
+    transform: translateX(80vw);
+  }
+}
+
+.mySlides {
+  display: none;
+}
+
+.Imgcontainer {
+  padding: 0.01em 16px;
+}
+.Imgcontent {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+}
+
+.Imgdisplay-container {
+  position: relative;
+  display: flex;
+}
+
+.Imgblack,
+.Imghover-black:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+.Imgbutton {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.Imgbutton {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Imgdisplay-left {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(0%, -50%);
+  -ms-transform: translate(-0%, -50%);
+}
+
+.Imgdisplay-right {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+}
+
+#centeralign {
+  text-align: center;
+}
+
+.marquee {
+  background-color: #fff;
+  width: 1100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.marquee-content {
+  list-style: none;
+  display: flex;
+  height: 100px;
+  animation: moving 50s linear infinite;
+}
+
+@keyframes moving {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2640px);
+  }
+}
+
+.marquee-content li {
+  border: 2px solid #fff;
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  white-space: nowrap;
+  object-fit: cover;
+}
+
+.marquee-content li img {
+  width: 200px;
 }
